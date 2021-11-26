@@ -18,130 +18,210 @@ namespace Teacher_Student_Connect_Project.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserRepository userRepository;
-        private readonly IMapper mapper;
-        private readonly IUserServices userServices;
+            private readonly IUserRepository userRepository;
+            private readonly IMapper mapper;
+            private readonly IUserServices userServices;
 
-        public AccountController(IMapper mapper, IUserRepository userRepository, IUserServices userServices)
-        {
-            this.userRepository = userRepository;
-            this.mapper = mapper;
-            this.userServices = userServices;
-        }
-
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(UserViewModel user)
-        {
-            try
+            public AccountController(IMapper mapper, IUserRepository userRepository, IUserServices userServices)
             {
-                if (ModelState.IsValid)
+                this.userRepository = userRepository;
+                this.mapper = mapper;
+                this.userServices = userServices;
+            }
+
+            public ActionResult Register()
+            {
+                return View();
+            }
+
+
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public ActionResult Register(UserViewModel user)
+            {
+                try
                 {
-
-                    user.UserId = userServices.GetUserId(user.FirstName, user.PhoneNumber);
-                    if (!userRepository.UserExists(user.UserId))
+                    if (ModelState.IsValid)
                     {
-                        string userId = userRepository.PostUser(user);
 
-                        if (user.UserId == userId)
+                        user.UserId = userServices.GetUserId(user.FirstName, user.PhoneNumber);
+                        if (!userRepository.UserExists(user.UserId))
                         {
-                            return Content("User Id created sucessfully, please remember this user id for login : " + userId);
+                            string userId = userRepository.PostUser(user);
+
+                            if (user.UserId == userId)
+                            {
+                                return Content("User Id created sucessfully, please remember this user id for login : " + userId);
+                            }
+                            else
+                            {
+                                return Content("Something went wrong please try again");
+                            }
                         }
                         else
                         {
-                            return Content("Something went wrong please try again");
+                            return Content("User already exist in database");
                         }
-                    }
-                    else
-                    {
-                        return Content("User already exist in database");
+
+
                     }
 
 
+                    return View(user);
                 }
-
-
-                return View(user);
-            }
-            catch (Exception ex)
-            {
-                return Content(ex.Message);
-            }
-        }
-
-
-        public ActionResult Login(string returnUrl)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
-        }
-
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel loginViewModel, string returnUrl)
-        {
-            try
-            {
-                if (ModelState.IsValid)
+                catch (Exception ex)
                 {
-                    ClaimsIdentity identity = null;
-                    bool IsAuthenticate = false;
-                    if (userRepository.UserExists(loginViewModel.UserId, loginViewModel.Password))
+                    return Content(ex.Message);
+                }
+            }
+
+
+            public ActionResult Login(string returnUrl)
+            {
+                ViewData["ReturnUrl"] = returnUrl;
+                return View();
+            }
+
+
+
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public async Task<ActionResult> Login(LoginViewModel loginViewModel, string returnUrl)
+            {
+                try
+                {
+                    if (ModelState.IsValid)
                     {
-                        identity = new ClaimsIdentity(new[]
+                        ClaimsIdentity identity = null;
+                        bool IsAuthenticate = false;
+                        if (userRepository.UserExists(loginViewModel.UserId, loginViewModel.Password))
                         {
+                            identity = new ClaimsIdentity(new[]
+                            {
                            new Claim(ClaimTypes.Name,loginViewModel.UserId),
                            new Claim(ClaimTypes.Role,userRepository.GetRole(loginViewModel.UserId))
                        }, CookieAuthenticationDefaults.AuthenticationScheme);
-                        IsAuthenticate = true;
-                    }
+                            IsAuthenticate = true;
+                        }
 
-                    if (IsAuthenticate)
-                    {
-                        var principal = new ClaimsPrincipal(identity);
-                        await HttpContext.SignInAsync(principal);
-                        if (returnUrl == null)
+                        if (IsAuthenticate)
                         {
-                            return RedirectToAction("Index", "Home");
+                            var principal = new ClaimsPrincipal(identity);
+                            await HttpContext.SignInAsync(principal);
+                            if (returnUrl == null)
+                            {
+                                return RedirectToAction("Index", "Home");
+                            }
+                            else
+                            {
+                                return RedirectToAction(returnUrl);
+                            }
+
                         }
                         else
                         {
-                            return RedirectToAction(returnUrl);
+                            ModelState.AddModelError(string.Empty, "The user name or password is incorrect");
+                            return View(loginViewModel);
                         }
+                    }
+
+
+
+                    return View(loginViewModel);
+                }
+                catch (Exception ex)
+                {
+                    return Content(ex.Message);
+                }
+            }
+
+            [Authorize]
+            public async Task<ActionResult> Logout()
+            {
+                await HttpContext.SignOutAsync();
+                return RedirectToAction("Index", "Home");
+            }
+            public ActionResult ForgotUserId()
+            {
+                return View();
+            }
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public ActionResult ForgotUserId(ForgotUserIdViewModel model)
+            {
+                if (ModelState.IsValid)
+                {
+                    string userId = userRepository.GetUserId(model);
+                    if (userId == null)
+                    {
+                        ModelState.AddModelError(string.Empty, "Wrong Details, Please verify and try again");
+                        return View(model);
+                    }
+                    else
+                    {
+                        return Content("Your UserId Is : " + userId);
+                    }
+
+                }
+                else
+                {
+                    return View(model);
+                }
+
+            }
+            public ActionResult ForgotPassword()
+            {
+                return View();
+            }
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public ActionResult ForgotPassword(ForgotPasswordViewModel model)
+            {
+                if (ModelState.IsValid)
+                {
+                    bool correct = userRepository.IsCorrect(model);
+
+                    if (correct)
+                    {
+                        TempData["UserId"] = model.UserId;
+                        return RedirectToAction("ChangePassword", "Account");
 
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "The user name or password is incorrect");
-                        return View(loginViewModel);
+                        ModelState.AddModelError(string.Empty, "Wrong Details, Please verify and try again");
+                        return View(model);
                     }
+
+                }
+                else
+                {
+                    return View(model);
                 }
 
-
-
-                return View(loginViewModel);
             }
-            catch (Exception ex)
+
+            public ActionResult ChangePassword()
             {
-                return Content(ex.Message);
+                ChangePasswordViewModel viewModel = new ChangePasswordViewModel();
+                viewModel.UserId = TempData["UserId"].ToString();
+                return View(viewModel);
             }
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public ActionResult ChangePassword(ChangePasswordViewModel model)
+            {
+                if (ModelState.IsValid)
+                {
+                    userRepository.ChangePassword(model);
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    return View(model);
+                }
+
+            }
+
         }
-
-        [Authorize]
-        public async Task<ActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("Index", "Home");
-        }
-
-
     }
-}

@@ -12,6 +12,8 @@ namespace Teacher_Student_Connect_Project.IRepository
         bool UserExists(string userId);
         bool UserExists(string userId, string password);
         string GetRole(string userId);
-
+        string GetUserId(ForgotUserIdViewModel model);
+        bool IsCorrect(ForgotPasswordViewModel model);
+        void ChangePassword(ChangePasswordViewModel model);
     }
 }
