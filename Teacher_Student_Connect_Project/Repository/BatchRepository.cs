@@ -21,19 +21,19 @@ namespace Teacher_Student_Connect_Project.Repository
         public List<Batch> GetBatches()
         {
             List<Batch> batches = new List<Batch>();
-            batches = dbContext.Batches.ToList();
+            batches = dbContext.Batchs.ToList();
             return batches;
 
         }
         public Batch GetBatches(int id)
         {
             Batch batch= new Batch();
-            batch = dbContext.Batches.FirstOrDefault(m => m.Id == id);
+            batch = dbContext.Batchs.FirstOrDefault(m => m.Id == id);
             return batch ;
         }
         public void PostBatches(Batch batch)
         {
-            dbContext.Batches.Add(batch);
+            dbContext.Batchs.Add(batch);
             dbContext.SaveChanges();
         }
     }

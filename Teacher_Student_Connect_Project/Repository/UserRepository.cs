@@ -38,6 +38,14 @@ namespace Teacher_Student_Connect_Project.Repository
             return user.Role;
         }
 
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+            users = dbContext.Users.ToList();
+            return users;
+        }
+
+
         public string GetUserId(ForgotUserIdViewModel model)
         {
             User user = new User();

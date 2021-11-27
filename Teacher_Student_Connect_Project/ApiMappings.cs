@@ -14,6 +14,7 @@ namespace Teacher_Student_Connect_Project
         public ApiMappings()
         {
             CreateMap<User, UserViewModel>().ReverseMap();
+            CreateMap<Document, DocumentViewModel>().ReverseMap();
 
         }
     }

@@ -13,8 +13,9 @@ namespace Teacher_Student_Connect_Project.ViewModels
         [Required(ErrorMessage="Please choose a batch")]
         [Display(Name ="Batch")]
         public int BatchId { get; set; }
-        public Batch Batch { get; set; }
+        public List<Batch> Batch { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
+        public List<User> User { get; set; }
+
     }
 }
