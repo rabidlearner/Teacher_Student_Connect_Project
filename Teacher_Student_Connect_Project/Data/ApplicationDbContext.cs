@@ -21,6 +21,7 @@ namespace Teacher_Student_Connect_Project.Data
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Category> Categorys  { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
     }
 }
