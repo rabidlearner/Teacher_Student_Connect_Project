@@ -15,6 +15,11 @@ namespace Teacher_Student_Connect_Project
         {
             CreateMap<User, UserViewModel>().ReverseMap();
             CreateMap<Document, DocumentViewModel>().ReverseMap();
+            CreateMap<Student, StudentViewModel>().ReverseMap();
+            CreateMap<Teacher, TeacherViewModel>().ReverseMap();
+            CreateMap<Subject, SubjectViewModel>().ReverseMap();
+            CreateMap<Batch, BatchViewModel>().ReverseMap();
+            CreateMap<Category, CategoryViewModel>().ReverseMap();
 
         }
     }

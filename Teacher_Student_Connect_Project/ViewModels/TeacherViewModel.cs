@@ -12,7 +12,7 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public int Id { get; set; }
         public int SubjectId { get; set; }
 
-        public IList<Subject> Subject { get; set; }
+        public List<Subject> Subject { get; set; }
 
         [Required(ErrorMessage = "Date of birth is Mandatory")]
         [Display(Name = "Date of Birth")]
@@ -24,7 +24,7 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public int PriorExperience { get; set; }
 
         public int UserId { get; set; }
-        public User User { get; set; }
+        public List<User> User { get; set; }
 
     }
 }

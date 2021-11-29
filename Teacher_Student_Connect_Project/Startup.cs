@@ -34,8 +34,20 @@ namespace Teacher_Student_Connect_Project
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddAutoMapper(typeof(ApiMappings));
+
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserServices, UserServices>();
+
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IStudentServices, StudentServices>();
+
+            services.AddScoped<ITeacherRepository, TeacherRepository>();
+            services.AddScoped<ITeacherServices, TeacherServices>();
+
+            services.AddScoped<IBatchRepository, BatchRepository>();
+
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
