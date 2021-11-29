@@ -1,0 +1,64 @@
+﻿@model Teacher_Student_Connect_Project.ViewModels.StudentViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    @*<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" />
+        <script type="text/javascript" src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#Multiselect').multiselect({
+                    includeSelectAllOption: true
+                });
+            });
+        </script>*@
+}
+
+<h1>Create</h1>
+
+<h4>StudentViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="id" class="control-label"></label>
+            <input asp-for="id" class="form-control" />
+            <span asp-validation-for="id" class="text-danger"></span>
+        </div>*@
+
+            <div class="form-group">
+                <label asp-for="BatchId" class="control-label"></label>
+                @Html.DropDownListFor(x => x.BatchId, new SelectList(Model.Batch, "Id","Batch_Number", Model.BatchId), "--Select--", new { @class = "form-control" })
+                <span asp-validation-for="BatchId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatchId" class="control-label"></label>
+                @Html.DropDownListFor(x => x.BatchId, new SelectList(Model.Batch, "Id", "Year", Model.BatchId), "--Select--", new { @class = "form-control" })
+                <span asp-validation-for="BatchId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.listbox').multiselect({
+                includeSelectAllOption: true
+            });
+        });
+    </script>*@

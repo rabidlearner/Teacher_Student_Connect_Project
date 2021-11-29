@@ -14,8 +14,8 @@ namespace Teacher_Student_Connect_Project.ViewModels
 
         public List<Subject> Subject { get; set; }
 
-        [Required(ErrorMessage = "Date of birth is Mandatory")]
-        [Display(Name = "Date of Birth")]
+        [Required(ErrorMessage = "Date of joining is Mandatory")]
+        [Display(Name = "Date of Joining")]
         [DataType(DataType.Date, ErrorMessage = "Please Enter a Valid Date")]
         public int DateofJoining { get; set; }
 
