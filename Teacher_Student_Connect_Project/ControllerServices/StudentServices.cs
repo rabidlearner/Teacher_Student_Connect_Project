@@ -85,7 +85,6 @@ namespace Teacher_Student_Connect_Project.ControllerServices
 
         public void PostStudent(StudentViewModel studentViewModel)
         {
-            clinicViewModel.FacilitiesAvailable = String.Join(", ", clinicViewModel.FacilitiesSelected);
             Student student = new Student();
 
             student = mapper.Map<Student>(studentViewModel);
