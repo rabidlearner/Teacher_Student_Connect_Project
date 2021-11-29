@@ -56,9 +56,7 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                               Dob = user.Dob,
                               Gender = user.Gender,
                               PhoneNumber = user.PhoneNumber,
-                              UserId = user.UserId,
                               Website = user.Email,
-                              Batch = batch.Batch_Number,
                               BatchYear= batch.Year
                           }
                         );
@@ -67,15 +65,13 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                 StudentDataViewModel studentData = new StudentDataViewModel()
                 {
                     Id = student.Id,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Dob = user.Dob,
-                    Gender = user.Gender,
-                    PhoneNumber = user.PhoneNumber,
-                    UserId = user.UserId,
-                    Website = user.Email,
-                    Batch = batch.Batch_Number,
-                    BatchYear = batch.Year
+                    FirstName = student.FirstName,
+                    LastName = student.LastName,
+                    Dob = student.Dob,
+                    Gender = student.Gender,
+                    PhoneNumber = student.PhoneNumber,
+                    Website = student.Website,
+                    BatchYear = student.BatchYear
                 };
                 studentDataViewModels.Add(studentData);
 
