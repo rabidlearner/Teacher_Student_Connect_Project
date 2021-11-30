@@ -20,6 +20,7 @@ namespace Teacher_Student_Connect_Project
             CreateMap<Subject, SubjectViewModel>().ReverseMap();
             CreateMap<Batch, BatchViewModel>().ReverseMap();
             CreateMap<Category, CategoryViewModel>().ReverseMap();
+            CreateMap<Specialization, SpecializationViewModel>().ReverseMap();
 
         }
     }

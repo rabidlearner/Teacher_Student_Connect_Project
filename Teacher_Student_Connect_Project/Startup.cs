@@ -48,6 +48,8 @@ namespace Teacher_Student_Connect_Project
 
             services.AddScoped<ISubjectRepository, SubjectRepository>();
 
+            services.AddScoped<ISpecializationRepository, SpecializationRepository>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
