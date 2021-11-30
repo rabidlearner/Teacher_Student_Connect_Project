@@ -9,7 +9,7 @@ namespace Teacher_Student_Connect_Project.IRepository
     public interface IBatchRepository
     {
         List<Batch> GetBatches();
-        Batch GetBatches(int id);
-        void PostBatches(Batch subject);
+        Batch GetBatch(int id);
+        void PostBatches(Batch batch);
     }
 }

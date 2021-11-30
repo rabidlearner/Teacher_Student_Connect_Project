@@ -25,7 +25,7 @@ namespace Teacher_Student_Connect_Project.Repository
             return batches;
 
         }
-        public Batch GetBatches(int id)
+        public Batch GetBatch(int id)
         {
             Batch batch= new Batch();
             batch = dbContext.Batchs.FirstOrDefault(m => m.Id == id);

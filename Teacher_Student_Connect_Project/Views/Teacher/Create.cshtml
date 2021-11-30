@@ -47,6 +47,13 @@
                 @Html.DropDownListFor(x => x.SubjectId, new SelectList(Model.Subject, "Id", "Subject_Name", Model.SubjectId), "--Select--", new { @class = "form-control" })
                 <span asp-validation-for="SubjectId" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="SpecializationId" class="control-label"></label>
+                @Html.DropDownListFor(x => x.SpecializationId, new SelectList(Model.Specialization, "Id", "Name", Model.SpecializationId), "--Select--", new { @class = "form-control" })
+                <span asp-validation-for="SpecializationId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

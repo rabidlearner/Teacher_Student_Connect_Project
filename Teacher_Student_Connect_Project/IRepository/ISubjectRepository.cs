@@ -9,7 +9,7 @@ namespace Teacher_Student_Connect_Project.IRepository
     public interface ISubjectRepository
     {
         List<Subject> GetSubjects();
-        Subject GetSubjects(int id);
+        Subject GetSubject(int id);
         void PostSubjects(Subject subject); 
     }
 }

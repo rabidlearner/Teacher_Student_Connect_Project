@@ -14,6 +14,8 @@ namespace Teacher_Student_Connect_Project.Models
         public int PriorExperience { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+        public int SpecializationId { get; set; }
+        public Specialization Specialization { get; set; }
 
     }
 }

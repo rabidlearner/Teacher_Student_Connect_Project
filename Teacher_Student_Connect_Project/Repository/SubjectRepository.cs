@@ -25,7 +25,7 @@ namespace Teacher_Student_Connect_Project.Repository
             return subjects;
 
         }
-        public Subject GetSubjects(int id)
+        public Subject GetSubject(int id)
         {
             Subject subject = new Subject();
             subject = dbContext.Subjects.FirstOrDefault(m => m.Id == id);

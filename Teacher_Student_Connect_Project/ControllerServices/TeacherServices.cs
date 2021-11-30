@@ -14,13 +14,15 @@ namespace Teacher_Student_Connect_Project.ControllerServices
     {
         private readonly ISubjectRepository subjectRepository;
         private readonly ITeacherRepository teacherRepository;
+        private readonly ISpecializationRepository specializationRepository;
         private readonly IUserRepository userRepository;
         private readonly IMapper mapper;
 
-        public TeacherServices(ISubjectRepository subjectRepository, ITeacherRepository teacherRepository, IMapper mapper, IUserRepository userRepository)
+        public TeacherServices(ISubjectRepository subjectRepository, ITeacherRepository teacherRepository, IMapper mapper, IUserRepository userRepository, ISpecializationRepository specializationRepository)
         {
             this.subjectRepository = subjectRepository;
             this.teacherRepository = teacherRepository;
+            this.specializationRepository = specializationRepository;
             this.userRepository = userRepository;
             this.mapper = mapper;
         }
@@ -28,6 +30,7 @@ namespace Teacher_Student_Connect_Project.ControllerServices
         {
             TeacherViewModel teacherViewModel = new TeacherViewModel();
             teacherViewModel.Subject = subjectRepository.GetSubjects();
+            teacherViewModel.Specialization = specializationRepository.GetSpecializations();
             teacherViewModel.User = userRepository.GetUsers();
 
             return teacherViewModel;
@@ -40,6 +43,8 @@ namespace Teacher_Student_Connect_Project.ControllerServices
             teachers = teacherRepository.GetTeachers();
             List<Subject> subjects = new List<Subject>();
             subjects = subjectRepository.GetSubjects();
+            List<Specialization> specializations = new List<Specialization>();
+            specializations = specializationRepository.GetSpecializations();
             List<User> users = new List<User>();
 
 
@@ -48,6 +53,8 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                           on teacher.UserId equals user.Id
                           join subject in subjects
                           on teacher.SubjectId equals subject.Id
+                          join specialization in specializations
+                          on teacher.SpecializationId equals specialization.Id
                           select new
                           {
                               Id = teacher.Id,
@@ -58,6 +65,7 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                               PhoneNumber = user.PhoneNumber,
                               Website = user.Email,
                               SubjectId = teacher.SubjectId,
+                              SpecializationId = teacher.SpecializationId
                           }
                         );
             foreach (var teacher in result)
@@ -72,6 +80,7 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                     PhoneNumber = teacher.PhoneNumber,
                     Website = teacher.Website,
                     SubjectId = teacher.SubjectId,
+                    SpecializationId = teacher.SpecializationId
                 };
                 teacherDataViewModels.Add(teacherData);
 
