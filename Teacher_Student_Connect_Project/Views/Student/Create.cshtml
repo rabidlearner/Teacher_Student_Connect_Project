@@ -30,16 +30,17 @@
             <span asp-validation-for="id" class="text-danger"></span>
         </div>*@
 
-            <div class="form-group">
-                <label asp-for="BatchId" class="control-label"></label>
-                @Html.DropDownListFor(x => x.BatchId, new SelectList(Model.Batch, "Id","Batch_Number", Model.BatchId), "--Select--", new { @class = "form-control" })
-                <span asp-validation-for="BatchId" class="text-danger"></span>
-            </div>
+            @*<div class="form-group">
+            <label asp-for="BatchId" class="control-label"></label>
+            @Html.DropDownListFor(x => x.BatchId, new SelectList(Model.Batch, "Id","Batch_Number", Model.BatchId), "--Select--", new { @class = "form-control" })
+            <span asp-validation-for="BatchId" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <label asp-for="BatchId" class="control-label"></label>
                 @Html.DropDownListFor(x => x.BatchId, new SelectList(Model.Batch, "Id", "Year", Model.BatchId), "--Select--", new { @class = "form-control" })
                 <span asp-validation-for="BatchId" class="text-danger"></span>
             </div>
+            @Html.HiddenFor(m => m.UserId)
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

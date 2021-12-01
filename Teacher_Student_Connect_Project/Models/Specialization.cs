@@ -8,6 +8,6 @@ namespace Teacher_Student_Connect_Project.Models
     public class Specialization
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }

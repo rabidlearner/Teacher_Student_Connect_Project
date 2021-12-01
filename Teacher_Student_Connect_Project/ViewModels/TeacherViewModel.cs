@@ -20,7 +20,6 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public int DateofJoining { get; set; }
 
         [Display(Name = "Prior Experience")]
-        [DataType(DataType.Date, ErrorMessage = "Please Enter a Valid number in months")]
         public int PriorExperience { get; set; }
 
         public int UserId { get; set; }

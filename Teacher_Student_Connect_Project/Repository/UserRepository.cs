@@ -30,6 +30,13 @@ namespace Teacher_Student_Connect_Project.Repository
             dbContext.SaveChanges();
 
         }
+        public object GetId(string userId)
+        {
+            User user = new User();
+            user = dbContext.Users.FirstOrDefault(m => m.UserId == userId);
+            return user.Id;
+
+        }
 
         public string GetRole(string userId)
         {
@@ -38,13 +45,18 @@ namespace Teacher_Student_Connect_Project.Repository
             return user.Role;
         }
 
-        public List<User> GetUsers()
+        /*public List<User> GetUsers()
         {
             List<User> users = new List<User>();
             users = dbContext.Users.ToList();
             return users;
+        }*/
+        public User GetUserById(int id)
+        {
+            User user = new User();
+            user = dbContext.Users.FirstOrDefault(m => m.Id == id);
+            return user;
         }
-
 
         public string GetUserId(ForgotUserIdViewModel model)
         {

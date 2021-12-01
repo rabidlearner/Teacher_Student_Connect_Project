@@ -10,6 +10,6 @@ namespace Teacher_Student_Connect_Project.IControllerServices
     {
         StudentViewModel Create();
         void PostStudent(StudentViewModel student);
-        List<StudentDataViewModel> GetStudents();
+        List<StudentDataViewModel> GetStudents(int id);
     }
 }

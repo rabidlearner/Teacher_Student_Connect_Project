@@ -31,24 +31,38 @@ namespace Teacher_Student_Connect_Project.ControllerServices
             TeacherViewModel teacherViewModel = new TeacherViewModel();
             teacherViewModel.Subject = subjectRepository.GetSubjects();
             teacherViewModel.Specialization = specializationRepository.GetSpecializations();
-            teacherViewModel.User = userRepository.GetUsers();
 
             return teacherViewModel;
         }
 
-        public List<TeacherDataViewModel> GetTeachers()
+        public List<TeacherDataViewModel> GetTeachers(int id)
         {
             List<TeacherDataViewModel> teacherDataViewModels = new List<TeacherDataViewModel>();
-            List<Teacher> teachers = new List<Teacher>();
-            teachers = teacherRepository.GetTeachers();
-            List<Subject> subjects = new List<Subject>();
-            subjects = subjectRepository.GetSubjects();
-            List<Specialization> specializations = new List<Specialization>();
-            specializations = specializationRepository.GetSpecializations();
-            List<User> users = new List<User>();
+            Teacher teachers = new Teacher();
+            teachers = teacherRepository.GetTeacherByUserId(id);
+            Subject subjects = new Subject();
+            subjects = subjectRepository.GetSubject(teachers.SubjectId);
+            Specialization specializations = new Specialization();
+            specializations = specializationRepository.GetSpecialization(teachers.SpecializationId);
+            User users = new User();
+            users = userRepository.GetUserById(id);
 
+            TeacherDataViewModel teacherData = new TeacherDataViewModel()
+            {
+                Id = teachers.Id,
+                FirstName = users.FirstName,
+                LastName = users.LastName,
+                Dob = users.Dob,
+                Gender = users.Gender,
+                PhoneNumber = users.PhoneNumber,
+                Website = users.Email,
+                Subject_Name = subjects.Subject_Name,
+                Specialization_Name = specializations.Name
+            };
+            teacherDataViewModels.Add(teacherData);
+            return teacherDataViewModels;
 
-            var result = (from teacher in teachers
+            /*var result = (from teacher in teachers
                           join user in users
                           on teacher.UserId equals user.Id
                           join subject in subjects
@@ -85,7 +99,7 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                 teacherDataViewModels.Add(teacherData);
 
             }
-            return teacherDataViewModels;
+            return teacherDataViewModels;*/
         }
 
         public void PostTeacher(TeacherViewModel teacherViewModel)

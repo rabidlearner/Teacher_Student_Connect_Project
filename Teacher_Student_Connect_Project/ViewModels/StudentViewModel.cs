@@ -16,8 +16,8 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public List<Batch> Batch { get; set; }
         public int UserId { get; set; }
         public List<User> User { get; set; }
-
-        /*public string FirstName { get; set; }
+/*
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Dob { get; set; }
         public string Gender { get; set; }

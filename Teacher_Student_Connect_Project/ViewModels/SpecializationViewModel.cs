@@ -8,6 +8,6 @@ namespace Teacher_Student_Connect_Project.ViewModels
     public class SpecializationViewModel
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }

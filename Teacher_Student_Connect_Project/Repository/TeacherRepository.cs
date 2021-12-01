@@ -27,6 +27,13 @@ namespace Teacher_Student_Connect_Project.Repository
             return teacher;
         }
 
+        public Teacher GetTeacherByUserId(int Id)
+        {
+            Teacher teacher = new Teacher();
+            teacher = dbContext.Teachers.FirstOrDefault(m => m.UserId == Id);
+            return teacher;
+        }
+
         public List<Teacher> GetTeachers()
         {
             List<Teacher> teachers = new List<Teacher>();

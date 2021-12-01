@@ -96,6 +96,7 @@ namespace Teacher_Student_Connect_Project.Controllers
                         bool IsAuthenticate = false;
                         if (userRepository.UserExists(loginViewModel.UserId, loginViewModel.Password))
                         {
+                            TempData["Id"] = userRepository.GetId(loginViewModel.UserId);
                             identity = new ClaimsIdentity(new[]
                             {
                            new Claim(ClaimTypes.Name,loginViewModel.UserId),

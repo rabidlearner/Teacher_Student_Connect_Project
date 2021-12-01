@@ -28,22 +28,35 @@ namespace Teacher_Student_Connect_Project.ControllerServices
         {
             StudentViewModel studentViewModel = new StudentViewModel();
             studentViewModel.Batch = batchRepository.GetBatches();
-            studentViewModel.User = userRepository.GetUsers();
 
             return studentViewModel;
         }
 
-        public List<StudentDataViewModel> GetStudents()
+        public List<StudentDataViewModel> GetStudents(int id)
         {
             List<StudentDataViewModel> studentDataViewModels = new List<StudentDataViewModel>();
-            List<Student> students = new List<Student>();
-            students = studentRepository.GetStudents();
-            List<Batch> batches = new List<Batch>();
-            batches = batchRepository.GetBatches();
-            List<User> users = new List<User>();
+            Student students = new Student();
+            students = studentRepository.GetStudentByUserId(id);
+            Batch batches = new Batch();
+            batches = batchRepository.GetBatch(students.BatchId);
+            User users = new User();
+            users= userRepository.GetUserById(id);
 
+            StudentDataViewModel studentData = new StudentDataViewModel()
+            {
+                Id = students.Id,
+                FirstName = users.FirstName,
+                LastName = users.LastName,
+                Dob = users.Dob,
+                Gender = users.Gender,
+                PhoneNumber = users.PhoneNumber,
+                Website = users.Email,
+                BatchYear = batches.Year
+            };
+            studentDataViewModels.Add(studentData);
+            return studentDataViewModels;
 
-            var result = (from student in students
+            /*var result = (from student in students
                           join user in users
                           on student.UserId equals user.Id
                           join batch in batches
@@ -76,7 +89,7 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                 studentDataViewModels.Add(studentData);
 
             }
-            return studentDataViewModels;
+            return studentDataViewModels;*/
         }
 
         public void PostStudent(StudentViewModel studentViewModel)

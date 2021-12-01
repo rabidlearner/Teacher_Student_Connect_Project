@@ -20,8 +20,9 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public int DateofJoining { get; set; }
 
         [Display(Name = "Prior Experience")]
-        [DataType(DataType.Date, ErrorMessage = "Please Enter a Valid number in months")]
         public int PriorExperience { get; set; }
+
+        //Experience = Math.Abs(12 * (DateofJoining.Year - DateTime.Now.Year) + DateOfJoining.Month - DateTime.Now.Month);
 
         public int UserId { get; set; }
         public List<User> User { get; set; }
@@ -34,6 +35,8 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public DateTime Dob { get; set; }
         public string Gender { get; set; }
         public string PhoneNumber { get; set; }
+        public string Subject_Name { get; set; }
+        public string Specialization_Name { get; set; }
         public string Website { get; set; }
     }
 }

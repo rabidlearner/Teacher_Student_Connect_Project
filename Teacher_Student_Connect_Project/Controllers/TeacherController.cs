@@ -21,14 +21,22 @@ namespace Teacher_Student_Connect_Project.Controllers
         }
         public IActionResult Index()
         {
-            List<TeacherDataViewModel> teachers = new List<TeacherDataViewModel>();
-            teachers = teacherServices.GetTeachers();
-            return View(teachers);
+            try
+            {
+                List<TeacherDataViewModel> teacherDataViewModels = new List<TeacherDataViewModel>();
+                teacherDataViewModels = teacherServices.GetTeachers(int.Parse(TempData["Id"].ToString()));
+                return View(teacherDataViewModels);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Logout", "Account");
+            }
         }
         public IActionResult Create()
         {
             TeacherViewModel teacherViewModel = new TeacherViewModel();
             teacherViewModel = teacherServices.Create();
+            teacherViewModel.UserId = int.Parse(TempData["Id"].ToString());
             return View(teacherViewModel);
         }
         [HttpPost]

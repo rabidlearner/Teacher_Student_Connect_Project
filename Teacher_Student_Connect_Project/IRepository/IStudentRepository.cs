@@ -11,6 +11,6 @@ namespace Teacher_Student_Connect_Project.IRepository
         Student GetStudent(int Id);
         List<Student> GetStudents();
         void PostStudent(Student Student);
-
+        Student GetStudentByUserId(int id);
     }
 }

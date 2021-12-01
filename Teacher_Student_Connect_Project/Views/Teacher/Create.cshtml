@@ -31,9 +31,9 @@
         </div>*@
 
             <div class="form-group">
-                <label asp-for="PriorExperience" class="control-label"></label>
-                <input asp-for="PriorExperience" class="form-control" />
-                <span asp-validation-for="PriorExperience" class="text-danger"></span>
+            <label asp-for="PriorExperience" class="control-label"></label>
+            <input asp-for="PriorExperience" class="form-control" />
+            <span asp-validation-for="PriorExperience" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -53,7 +53,7 @@
                 @Html.DropDownListFor(x => x.SpecializationId, new SelectList(Model.Specialization, "Id", "Name", Model.SpecializationId), "--Select--", new { @class = "form-control" })
                 <span asp-validation-for="SpecializationId" class="text-danger"></span>
             </div>
-
+            @Html.HiddenFor(m => m.UserId)
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
