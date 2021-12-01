@@ -10,7 +10,7 @@ namespace Teacher_Student_Connect_Project.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public int SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        public List<Subject> Subject { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string CompetencyLevel { get; set; }

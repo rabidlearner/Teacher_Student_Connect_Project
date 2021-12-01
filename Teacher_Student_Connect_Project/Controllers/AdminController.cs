@@ -57,6 +57,8 @@ namespace Teacher_Student_Connect_Project.Controllers
             document = adminRepository.GetDocById(3);
             return View(document);
         }
+        [HttpGet]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult UpdateDocuments(Document document)
