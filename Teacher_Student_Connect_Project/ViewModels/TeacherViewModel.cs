@@ -16,8 +16,7 @@ namespace Teacher_Student_Connect_Project.ViewModels
 
         [Required(ErrorMessage = "Date of joining is Mandatory")]
         [Display(Name = "Date of Joining")]
-        [DataType(DataType.Date, ErrorMessage = "Please Enter a Valid Date")]
-        public int DateofJoining { get; set; }
+        public DateTime DateofJoining { get; set; }
 
         [Display(Name = "Prior Experience")]
         public int PriorExperience { get; set; }

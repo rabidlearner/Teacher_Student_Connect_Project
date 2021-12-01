@@ -56,8 +56,10 @@ namespace Teacher_Student_Connect_Project.ControllerServices
                 Gender = users.Gender,
                 PhoneNumber = users.PhoneNumber,
                 Website = users.Email,
-                Subject_Name = subjects.Subject_Name,
-                Specialization_Name = specializations.Name
+                SubjectName = subjects.Subject_Name,
+                SpecializationName = specializations.Name,
+                PriorExperience = teachers.PriorExperience,
+                DateofJoining = teachers.DateOfJoining
             };
             teacherDataViewModels.Add(teacherData);
             return teacherDataViewModels;

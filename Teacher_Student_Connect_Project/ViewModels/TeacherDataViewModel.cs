@@ -16,8 +16,7 @@ namespace Teacher_Student_Connect_Project.ViewModels
 
         [Required(ErrorMessage = "Date of joining is Mandatory")]
         [Display(Name = "Date of Joining")]
-        [DataType(DataType.Date, ErrorMessage = "Please Enter a Valid Date")]
-        public int DateofJoining { get; set; }
+        public DateTime DateofJoining { get; set; }
 
         [Display(Name = "Prior Experience")]
         public int PriorExperience { get; set; }
@@ -35,8 +34,8 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public DateTime Dob { get; set; }
         public string Gender { get; set; }
         public string PhoneNumber { get; set; }
-        public string Subject_Name { get; set; }
-        public string Specialization_Name { get; set; }
+        public string SubjectName { get; set; }
+        public string SpecializationName { get; set; }
         public string Website { get; set; }
     }
 }

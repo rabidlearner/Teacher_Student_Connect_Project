@@ -31,6 +31,7 @@ namespace Teacher_Student_Connect_Project.Repository
             batch = dbContext.Batchs.FirstOrDefault(m => m.Id == id);
             return batch ;
         }
+
         public void PostBatches(Batch batch)
         {
             dbContext.Batchs.Add(batch);

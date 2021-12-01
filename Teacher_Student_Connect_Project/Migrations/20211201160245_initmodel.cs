@@ -35,6 +35,19 @@ namespace Teacher_Student_Connect_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Specializations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Specializations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Subjects",
                 columns: table => new
                 {
@@ -129,13 +142,20 @@ namespace Teacher_Student_Connect_Project.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SubjectId = table.Column<int>(nullable: false),
-                    DateOfJoining = table.Column<int>(nullable: false),
+                    DateOfJoining = table.Column<DateTime>(nullable: false),
                     PriorExperience = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    SpecializationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Teachers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Teachers_Specializations_SpecializationId",
+                        column: x => x.SpecializationId,
+                        principalTable: "Specializations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Teachers_Subjects_SubjectId",
                         column: x => x.SubjectId,
@@ -149,6 +169,43 @@ namespace Teacher_Student_Connect_Project.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Admins",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: false),
+                    DocumnetId = table.Column<int>(nullable: false),
+                    DocumentId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admins", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Admins_Documents_DocumentId",
+                        column: x => x.DocumentId,
+                        principalTable: "Documents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Admins_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Admins_DocumentId",
+                table: "Admins",
+                column: "DocumentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Admins_UserId",
+                table: "Admins",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Documents_SubjectId",
@@ -166,6 +223,11 @@ namespace Teacher_Student_Connect_Project.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Teachers_SpecializationId",
+                table: "Teachers",
+                column: "SpecializationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Teachers_SubjectId",
                 table: "Teachers",
                 column: "SubjectId");
@@ -179,10 +241,10 @@ namespace Teacher_Student_Connect_Project.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Categorys");
+                name: "Admins");
 
             migrationBuilder.DropTable(
-                name: "Documents");
+                name: "Categorys");
 
             migrationBuilder.DropTable(
                 name: "Students");
@@ -191,13 +253,19 @@ namespace Teacher_Student_Connect_Project.Migrations
                 name: "Teachers");
 
             migrationBuilder.DropTable(
+                name: "Documents");
+
+            migrationBuilder.DropTable(
                 name: "Batchs");
 
             migrationBuilder.DropTable(
-                name: "Subjects");
+                name: "Specializations");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Subjects");
         }
     }
 }

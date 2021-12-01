@@ -10,7 +10,7 @@ namespace Teacher_Student_Connect_Project.Models
         public int Id { get; set; }
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
-        public int DateOfJoining { get; set; }
+        public DateTime DateOfJoining { get; set; }
         public int PriorExperience { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }

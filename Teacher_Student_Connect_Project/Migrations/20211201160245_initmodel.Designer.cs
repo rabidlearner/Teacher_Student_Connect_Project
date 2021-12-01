@@ -10,8 +10,8 @@ using Teacher_Student_Connect_Project.Data;
 namespace Teacher_Student_Connect_Project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211130060553_updatespecialization")]
-    partial class updatespecialization
+    [Migration("20211201160245_initmodel")]
+    partial class initmodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -121,8 +121,8 @@ namespace Teacher_Student_Connect_Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -173,8 +173,8 @@ namespace Teacher_Student_Connect_Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DateOfJoining")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DateOfJoining")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PriorExperience")
                         .HasColumnType("int");

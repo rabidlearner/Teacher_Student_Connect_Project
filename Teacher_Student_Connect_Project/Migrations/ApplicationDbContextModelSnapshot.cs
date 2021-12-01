@@ -171,8 +171,8 @@ namespace Teacher_Student_Connect_Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DateOfJoining")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DateOfJoining")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PriorExperience")
                         .HasColumnType("int");
