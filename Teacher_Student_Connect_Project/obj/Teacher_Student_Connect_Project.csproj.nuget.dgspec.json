@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucky\\source\\repos\\TSC\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj": {}
+    "C:\\Users\\tonmo\\OneDrive\\Desktop\\Solid Principles - Need for Design Patterns\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucky\\source\\repos\\TSC\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj": {
+    "C:\\Users\\tonmo\\OneDrive\\Desktop\\Solid Principles - Need for Design Patterns\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucky\\source\\repos\\TSC\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj",
+        "projectUniqueName": "C:\\Users\\tonmo\\OneDrive\\Desktop\\Solid Principles - Need for Design Patterns\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj",
         "projectName": "Teacher_Student_Connect_Project",
-        "projectPath": "C:\\Users\\lucky\\source\\repos\\TSC\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj",
-        "packagesPath": "C:\\Users\\lucky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucky\\source\\repos\\TSC\\Teacher_Student_Connect_Project\\obj\\",
+        "projectPath": "C:\\Users\\tonmo\\OneDrive\\Desktop\\Solid Principles - Need for Design Patterns\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project.csproj",
+        "packagesPath": "C:\\Users\\tonmo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tonmo\\OneDrive\\Desktop\\Solid Principles - Need for Design Patterns\\Teacher_Student_Connect_Project\\Teacher_Student_Connect_Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lucky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tonmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -27,5 +27,7 @@ namespace Teacher_Student_Connect_Project.ViewModels
         public int SpecializationId { get; set; }
         public List<Specialization> Specialization { get; set; }
 
+       
+
     }
 }

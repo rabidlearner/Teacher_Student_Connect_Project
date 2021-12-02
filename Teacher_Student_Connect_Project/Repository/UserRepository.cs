@@ -143,5 +143,19 @@ namespace Teacher_Student_Connect_Project.Repository
                 return false;
             }
         }
+
+        public List<User> GetTeachers()
+        {
+            List<User> users = new List<User>();
+            users = dbContext.Users.Where(m => m.Role == "Teacher").ToList();
+            return users;
+        }
+
+        public List<User> GetStudents()
+        {
+            List<User> users = new List<User>();
+            users = dbContext.Users.Where(m => m.Role == "Student").ToList();
+            return users;
+        }
     }
 }

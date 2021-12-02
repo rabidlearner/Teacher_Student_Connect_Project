@@ -15,6 +15,6 @@ namespace Teacher_Student_Connect_Project.Models
         public string Author { get; set; }
         public string CompetencyLevel { get; set; }
         public string IntendedAudience { get; set; }
-        public string Attachment { get; set; }
+        public string AttachmentLocale { get; set; }
     }
 }

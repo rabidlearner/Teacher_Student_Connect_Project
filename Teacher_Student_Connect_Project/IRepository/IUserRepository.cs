@@ -19,5 +19,7 @@ namespace Teacher_Student_Connect_Project.IRepository
         void ChangePassword(ChangePasswordViewModel model);
         object GetId(string userId);
         public User GetUserById(int id);
+        List<User> GetStudents();
+        List<User> GetTeachers();
     }
 }
