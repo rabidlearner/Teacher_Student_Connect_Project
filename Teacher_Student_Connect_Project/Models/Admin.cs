@@ -13,5 +13,7 @@ namespace Teacher_Student_Connect_Project.Models
         public int DocumnetId { get; set; }
         public Document Document { get; set; }
         public List<Document> DocumentList { get; set; }
+
+
     }
 }

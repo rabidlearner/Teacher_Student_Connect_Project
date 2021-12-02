@@ -13,7 +13,7 @@ namespace Teacher_Student_Connect_Project.IRepository
         bool UserExists(string userId);
         bool UserExists(string userId, string password);
         string GetRole(string userId);
-        //List<User> GetUsers();
+        List<User> GetUsers();
         string GetUserId(ForgotUserIdViewModel model);
         bool IsCorrect(ForgotPasswordViewModel model);
         void ChangePassword(ChangePasswordViewModel model);
@@ -21,5 +21,7 @@ namespace Teacher_Student_Connect_Project.IRepository
         public User GetUserById(int id);
         List<User> GetStudents();
         List<User> GetTeachers();
+        public void Approve(int id);
+        List<User> GetAdmins();
     }
 }

@@ -45,12 +45,20 @@ namespace Teacher_Student_Connect_Project.Repository
             return user.Role;
         }
 
-        /*public List<User> GetUsers()
+        public List<User> GetUsers()
         {
             List<User> users = new List<User>();
             users = dbContext.Users.ToList();
             return users;
-        }*/
+        }
+
+        public List<User> GetAdmins()
+        {
+            List<User> users = new List<User>();
+            users = dbContext.Users.Where(m =>m.IsApproved == false).ToList();
+            return users;
+        }
+
         public User GetUserById(int id)
         {
             User user = new User();
@@ -133,7 +141,7 @@ namespace Teacher_Student_Connect_Project.Repository
         public bool UserExists(string userId, string password)
         {
             User user = new User();
-            user = dbContext.Users.FirstOrDefault(m => m.UserId == userId && m.Password == password);
+            user = dbContext.Users.FirstOrDefault(m => m.UserId == userId && m.Password == password && m.IsApproved == true);
             if (user != null)
             {
                 return true;
@@ -156,6 +164,15 @@ namespace Teacher_Student_Connect_Project.Repository
             List<User> users = new List<User>();
             users = dbContext.Users.Where(m => m.Role == "Student").ToList();
             return users;
+        }
+
+        public void Approve(int id)
+        {
+            User user = new User();
+            user = dbContext.Users.FirstOrDefault(m => m.Id == id);
+            user.IsApproved = true;
+            dbContext.Users.Update(user);
+            dbContext.SaveChanges();
         }
     }
 }

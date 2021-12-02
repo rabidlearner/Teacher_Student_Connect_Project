@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Teacher_Student_Connect_Project.Models;
 
 namespace Teacher_Student_Connect_Project.Controllers
 {
@@ -45,8 +46,16 @@ namespace Teacher_Student_Connect_Project.Controllers
                     {
 
                         user.UserId = userServices.GetUserId(user.FirstName, user.PhoneNumber);
-                        if (!userRepository.UserExists(user.UserId))
+                        if (!userRepository.UserExists(user.UserId) )
                         {
+                        if (user.Role == "Admin")
+                        { 
+                            user.IsApproved = false;
+                        }
+                        else
+                        {
+                            user.IsApproved = true;
+                        }
                             string userId = userRepository.PostUser(user);
 
                             if (user.UserId == userId)
@@ -224,5 +233,20 @@ namespace Teacher_Student_Connect_Project.Controllers
 
             }
 
-        }
+        [Authorize(Roles = "SuperAdmin")]
+        public IActionResult ListUsers()
+            {
+                List<User> users = new List<User>();
+                users = userRepository.GetAdmins();
+                return View(users);
+            }
+
+        [Authorize(Roles = "SuperAdmin")]
+            public IActionResult ApproveAdmin(int id)
+            {
+            userRepository.Approve(id);
+            return RedirectToAction("ListUsers");
+            }
+    
     }
+}

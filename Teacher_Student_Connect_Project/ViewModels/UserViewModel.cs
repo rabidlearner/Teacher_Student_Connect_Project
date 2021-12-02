@@ -41,7 +41,7 @@ namespace Teacher_Student_Connect_Project.ViewModels
         [Required]
         [Display(Name = "What is your pet's name?")]
         public string Answer3 { get; set; }
-
+        public bool IsApproved { get; set; }
 
     }
 }
