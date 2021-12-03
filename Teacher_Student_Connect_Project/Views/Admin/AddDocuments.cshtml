@@ -1,7 +1,7 @@
 ﻿@model Teacher_Student_Connect_Project.ViewModels.AddDocuments
 
 @{
-    ViewData["Title"] = "AddAvailability";
+    ViewData["Title"] = "AddDocumnets";
 }
 
 <h1>AddDocuments</h1>
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Subject" class="control-label"></label>
-                @Html.DropDownListFor(x => x.Subject, new SelectList(Model.SubjectList, "Id", "SubjectName"), "--Select--", new { @class = "form-control" })
+                @Html.DropDownListFor(x => x.Subject, new SelectList(Model.SubjectList, "Id", "SubjectName",Model.Subject), "--Select--", new { @class = "form-control" })
                 <span asp-validation-for="Subject" class="text-danger"></span>
             </div>
             <div class="form-group">

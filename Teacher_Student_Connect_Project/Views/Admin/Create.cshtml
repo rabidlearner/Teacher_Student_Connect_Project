@@ -1,4 +1,4 @@
-﻿@model Teacher_Student_Connect_Project.Models.Admin
+﻿@model Teacher_Student_Connect_Project.ViewModels.AdminViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -17,7 +17,11 @@
                 <input asp-for="UserId" class="form-control" />
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
-            
+            <div class="form-group">
+                <label asp-for="DocumnetId" class="control-label"></label>
+                <input asp-for="DocumnetId" class="form-control" />
+                <span asp-validation-for="DocumnetId" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

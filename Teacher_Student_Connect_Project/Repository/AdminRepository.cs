@@ -46,5 +46,23 @@ namespace Teacher_Student_Connect_Project.Repository
             document = dbContext.Documents.FirstOrDefault(m => m.Id == id);
             return document;
         }
+        public Admin GetAdminByUserId(int Id)
+        {
+            Admin admin = new Admin();
+            admin = dbContext.Admins.FirstOrDefault(m => m.UserId == Id);
+            return admin;
+        }
+        public void PostAddDocuments(Document document)
+        {
+            //dbContext.Subjects.ToList();
+            dbContext.Documents.Add(document);
+            dbContext.SaveChanges();
+        }
+        public List<Subject> GetSubjectList()
+        {
+            List<Subject> subjects = new List<Subject>(); 
+            dbContext.Subjects.ToList();
+            return subjects;
+        }
     }
 }

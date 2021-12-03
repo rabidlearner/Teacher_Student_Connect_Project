@@ -1,8 +1,38 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Account\ChangePassword.cshtml" />
+    <Content Remove="Views\Account\ForgotPassword.cshtml" />
+    <Content Remove="Views\Account\ForgotUserId.cshtml" />
+    <Content Remove="Views\Account\ListUsers.cshtml" />
+    <Content Remove="Views\Account\Login.cshtml" />
+    <Content Remove="Views\Account\Register.cshtml" />
+    <Content Remove="Views\Admin\AddDocuments.cshtml" />
+    <Content Remove="Views\Admin\Create.cshtml" />
+    <Content Remove="Views\Admin\Index.cshtml" />
+    <Content Remove="Views\Admin\UpdateDocs.cshtml" />
+    <Content Remove="Views\Batch\Create.cshtml" />
+    <Content Remove="Views\Batch\Index.cshtml" />
+    <Content Remove="Views\Home\Index.cshtml" />
+    <Content Remove="Views\Home\Privacy.cshtml" />
+    <Content Remove="Views\Shared\Error.cshtml" />
+    <Content Remove="Views\Shared\_Layout.cshtml" />
+    <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Remove="Views\Specialization\Create.cshtml" />
+    <Content Remove="Views\Specialization\Index.cshtml" />
+    <Content Remove="Views\Student\Create.cshtml" />
+    <Content Remove="Views\Student\Index.cshtml" />
+    <Content Remove="Views\Subject\Create.cshtml" />
+    <Content Remove="Views\Subject\Index.cshtml" />
+    <Content Remove="Views\Teacher\Create.cshtml" />
+    <Content Remove="Views\Teacher\Index.cshtml" />
+    <Content Remove="Views\_ViewImports.cshtml" />
+    <Content Remove="Views\_ViewStart.cshtml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
@@ -17,6 +47,36 @@
 
   <ItemGroup>
     <Folder Include="Views\SuperAdmin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Account\ChangePassword.cshtml" />
+    <None Include="Views\Account\ForgotPassword.cshtml" />
+    <None Include="Views\Account\ForgotUserId.cshtml" />
+    <None Include="Views\Account\ListUsers.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Admin\AddDocuments.cshtml" />
+    <None Include="Views\Admin\Create.cshtml" />
+    <None Include="Views\Admin\Index.cshtml" />
+    <None Include="Views\Admin\UpdateDocs.cshtml" />
+    <None Include="Views\Batch\Create.cshtml" />
+    <None Include="Views\Batch\Index.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Specialization\Create.cshtml" />
+    <None Include="Views\Specialization\Index.cshtml" />
+    <None Include="Views\Student\Create.cshtml" />
+    <None Include="Views\Student\Index.cshtml" />
+    <None Include="Views\Subject\Create.cshtml" />
+    <None Include="Views\Subject\Index.cshtml" />
+    <None Include="Views\Teacher\Create.cshtml" />
+    <None Include="Views\Teacher\Index.cshtml" />
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
