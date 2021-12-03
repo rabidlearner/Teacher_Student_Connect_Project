@@ -13,5 +13,8 @@ namespace Teacher_Student_Connect_Project.IRepository
         void AddDocuments(Document document);
         void UpdateDocuments(Document document);
         Document GetDocById(int id);
+        public Admin GetAdminByUserId(int id);
+        public void PostAddDocuments(Document document);
+        public List<Subject> GetSubjectList();
     }
 }
